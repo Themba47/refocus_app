@@ -1,0 +1,14 @@
+venv/
+.virtualenvs/
+
+# Python
+__pycache__/
+*.pyo
+*.pyd
+*.cpython
+*.pyc
+*.cpython-310.pyc
+*.sqlite3
+
+.sh
+.env
