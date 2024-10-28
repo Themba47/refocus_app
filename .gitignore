@@ -1,4 +1,4 @@
-venv/
+.venv/
 .virtualenvs/
 
 # Python
@@ -9,6 +9,7 @@ __pycache__/
 *.pyc
 *.cpython-310.pyc
 *.sqlite3
+*.sqlite
 
 .sh
 .env
