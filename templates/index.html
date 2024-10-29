@@ -79,6 +79,21 @@
             background-color: #f4f4f9;
         }
 
+        #progress-bar-div {
+            background-color: #f4f4f9;
+            border-radius: 50px;
+            margin: 10px 0;
+            height: 10px;
+            width: 55%;
+        }
+
+        #progress-bar {
+            background-color: #13c50a;
+            border-radius: 50px;
+            height: 100%;
+            width: 0;
+        }
+
         /* Styling for responsive design */
         @media (min-width: 768px) {
             .container {
@@ -110,6 +125,10 @@
             <p>Top Banner Ad Placeholder (728x90)</p>
         </section>
 
+        <div id="progress-bar-div">
+            <div id="progress-bar"></div>
+        </div>
+
         <!-- Main content area for questions -->
         <main>
             <section class="questionnaire">
@@ -138,9 +157,27 @@
 		  {% for qtn in questions %}
 		  	questions.push({{ qtn | tojson }});
 		  {% endfor %}
-		  console.log(questions)
+
+		  let questionHolder = [],
+          progress_bar = document.getElementById("progress-bar"),
+          qtn_and_answer = {};
 
         const questionnaireDiv = document.querySelector('.questionnaire');
+
+        function getNextQtn(index) {
+            if(document.querySelector('.answer').value.length > 0) {
+                qtn_and_answer[document.querySelector('.question').innerText] = document.querySelector('.answer').value; 
+                questionnaireDiv.innerHTML = ''
+                let progress = Math.round((index+1) / questionHolder.length * 100);
+                progress_bar.style.width = progress + '%'
+                if(index == questionHolder.length - 1) {
+                    console.log("QUESTIONS ARE DONE!!!")
+                } else {
+                    questionnaireDiv.append(questionHolder[index])
+                }
+                console.log(qtn_and_answer)
+            }
+        }
 
         questions.forEach((questionText, index) => {
             let questionDiv = document.createElement('div');
@@ -149,13 +186,17 @@
             questionDiv.innerHTML = `<p>${index + 1}. ${questionText['question']}</p>`;
 
             if(questionText['type'] == 'input') {
-                questionDiv.innerHTML += `<br><input type="text" id="answer_${index+1}">`
+                questionDiv.innerHTML += `<br><input class="answer" type="text" id="answer_${index+1}">`
             }
             if(questionText['type'] == 'textarea') {
-                questionDiv.innerHTML += `<br><textarea id="answer_${index+1}"></textarea>`
+                questionDiv.innerHTML += `<br><textarea class="answer" id="answer_${index+1}"></textarea>`
             }
-            questionDiv.innerHTML += `<br><button id="btn_${index+1}">Enter</button>`
-            questionnaireDiv.appendChild(questionDiv);
+            questionDiv.innerHTML += `<br><button onclick="getNextQtn(${index})" id="btn_${index+1}">Enter</button>`
+            if(index == 0) {
+                questionnaireDiv.appendChild(questionDiv);
+            }else {
+                questionHolder.push(questionDiv)
+            }
         });
     </script>
 </body>
