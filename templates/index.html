@@ -164,6 +164,16 @@
 
         const questionnaireDiv = document.querySelector('.questionnaire');
 
+        function call_last_div() {
+            let questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+			questionDiv.setAttribute('id', 'question_submit')
+            questionDiv.innerHTML = `<p>Please enter email to get a summary of your answers</p>`;
+            questionDiv.innerHTML += `<br><input class="email" type="email" id="email">`
+            questionDiv.innerHTML += `<br><button onclick="submitQtns()" id="submit_qtns">Submit</button>`
+            questionnaireDiv.appendChild(questionDiv);
+        }
+
         function getNextQtn(index) {
             if(document.querySelector('.answer').value.length > 0) {
                 qtn_and_answer[document.querySelector('.question').innerText] = document.querySelector('.answer').value; 
@@ -171,12 +181,16 @@
                 let progress = Math.round((index+1) / questionHolder.length * 100);
                 progress_bar.style.width = progress + '%'
                 if(index == questionHolder.length - 1) {
-                    console.log("QUESTIONS ARE DONE!!!")
+                    call_last_div();
+                    console.log(qtn_and_answer)
                 } else {
                     questionnaireDiv.append(questionHolder[index])
                 }
-                console.log(qtn_and_answer)
             }
+        }
+
+        function submitQtns() {
+            // fetch
         }
 
         questions.forEach((questionText, index) => {
