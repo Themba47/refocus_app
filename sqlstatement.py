@@ -14,7 +14,7 @@ def insert_query(query):
       print(f"------------------- {os.environ.get('SQLITE')} -----------------------")
       result = conn.execute(query)
       conn.commit()
-      return result.fetchall()
+      return result
    
 
 def execute_query(query):
@@ -62,5 +62,4 @@ def get_data():
 
 
 if __name__ == "__main__":
-   insert_data()
    pprint.pprint(get_data())
