@@ -58,6 +58,7 @@ def insert_data():
 
 
 def get_data():
+   print(f"GET DATA ------------------- {os.environ.get('SQLITE')} -----------------------")
    return execute_query(sql_get_data())
 
 
