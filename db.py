@@ -27,6 +27,6 @@ address = Table(
  	Column('created_date', DateTime, default=datetime.now(), onupdate=datetime.now()),
 )
 
-# if __name__ == "__main__":
-#    if get_connection():
-#       meta.create_all(get_connection())
+if __name__ == "__main__":
+   if get_connection():
+      meta.create_all(get_connection())

@@ -61,5 +61,5 @@ def get_data():
    return execute_query(sql_get_data())
 
 
-# if __name__ == "__main__":
-#    pprint.pprint(get_data())
+if __name__ == "__main__":
+   pprint.pprint(get_data())
