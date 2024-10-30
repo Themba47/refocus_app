@@ -62,4 +62,5 @@ def get_data():
 
 
 if __name__ == "__main__":
+   insert_data()
    pprint.pprint(get_data())
