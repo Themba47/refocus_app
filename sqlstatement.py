@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
-engine = create_engine(os.environ.get('SQLITE'))
+engine = create_engine('sqlite:////home/Thiza/refocus/minidb.sqlite')
 Session = sessionmaker(bind=engine)
 
 def insert_query(query):
