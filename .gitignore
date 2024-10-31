@@ -11,5 +11,6 @@ __pycache__/
 *.sqlite3
 *.sqlite
 
+**/config.py
 .sh
 .env

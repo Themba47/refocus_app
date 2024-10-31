@@ -1,8 +1,9 @@
 import json
 import pprint
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from typing import Union
 from sqlstatement import get_data, insert_answers
+from utils import get_ai_response
 
 from fastapi import FastAPI
 
@@ -21,6 +22,7 @@ def home():
      answers = json.loads(request.data)
      email = answers.pop('user_email')
      insert_answers(email, json.dumps(answers))
+     return jsonify({"result": get_ai_response(answers)})
      
    return render_template('index.html', questions=questions)
 

@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-6X3S34VP83"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6X3S34VP83"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-6X3S34VP83');
-</script> -->
+</script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Refocus Realign guides you in identifying your goals and developing a path to success. Dive deep with goal-focused questions to unlock your full potential and create a system to achieve what matters most.">
@@ -159,7 +159,7 @@
     <footer>
         <p>© 2024 Refocus Realign - All Rights Reserved</p>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         // JavaScript for dynamically adding questions, if needed
         let questions = [];
@@ -169,7 +169,8 @@
 
 		  let questionHolder = [],
           progress_bar = document.getElementById("progress-bar"),
-          qtn_and_answer = {};
+          qtn_and_answer = {},
+          ai_response = null;
 
         const questionnaireDiv = document.querySelector('.questionnaire');
 
@@ -181,6 +182,26 @@
             questionDiv.innerHTML += `<br><input class="email" type="email" id="email">`
             questionDiv.innerHTML += `<br><button type="button" onclick="submitQtns('user_email')" id="submit_qtns">Submit</button>`
             questionnaireDiv.appendChild(questionDiv);
+        }
+
+        function createPDFWithStyledParagraph(para) {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            const paragraph = para;
+
+            pdf.setFont("times", "italic");
+            pdf.setFontSize(12);
+
+            const maxWidth = 180;
+            const textLines = pdf.splitTextToSize(paragraph, maxWidth);
+
+            pdf.text(textLines, 10, 10);
+
+            pdf.save("refocus-realign.pdf");
+        }
+
+        function downloadAiPdf() {
+            createPDFWithStyledParagraph(ai_response)
         }
 
         function getNextQtn(index) {
@@ -200,7 +221,6 @@
 
         function submitQtns(key) {
             qtn_and_answer[key] = document.querySelector('#email').value;
-            questionnaireDiv.innerHTML = '<h1>DONE</h1>'
             options = {
                 method: "POST",
                 headers: {
@@ -211,7 +231,9 @@
             fetch("../", options)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
+                ai_response = data.result
+                // Add loader animation delay so it looks like there is a delay
+                questionnaireDiv.innerHTML = '<button onclick="downloadAiPdf()">Download Response</button>'
             }).catch(console.error);
             
         }
