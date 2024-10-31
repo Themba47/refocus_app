@@ -2,17 +2,19 @@ import os
 import pprint
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker
+from config import create_engine, Session
 
 load_dotenv()
 
-engine = create_engine('sqlite:////home/Thiza/refocus/minidb.sqlite')
-Session = sessionmaker(bind=engine)
 
-def insert_query(query):
+def insert_query(query, args=None):
    with Session() as conn:
       print(f"------------------- {os.environ.get('SQLITE')} -----------------------")
-      result = conn.execute(query)
+      result = None
+      if args:
+         result = conn.execute(query, args)
+      else:
+         result = conn.execute(query)
       conn.commit()
       return result
    
@@ -29,6 +31,13 @@ def sql_get_data():
 						*
 					FROM Focus_questions
                """)   
+   
+def sql_get_all_answers():
+   return text("""
+               SELECT 
+						*
+					FROM Focus_answers
+               """) 
 
    
 def sql_insert_data():
@@ -52,6 +61,13 @@ def sql_insert_data():
 	('How will you measure success along this journey, and what will keep you motivated to push through challenges?', 'textarea');
         """)
    
+def sql_insert_answers():
+   return text("""
+	INSERT INTO Focus_answers (email, answers)
+	VALUES 
+	(:email, :answers);
+        """)
+   
 
 def insert_data():
    return insert_query(sql_insert_data())
@@ -61,6 +77,13 @@ def get_data():
    print(f"GET DATA ------------------- {os.environ.get('SQLITE')} -----------------------")
    return execute_query(sql_get_data())
 
+def get_all_answers():
+   print(f"GET DATA ------------------- {os.environ.get('SQLITE')} -----------------------")
+   return execute_query(sql_get_all_answers())
+
+def insert_answers(email, answers):
+   return insert_query(sql_insert_answers(), {"email": email, "answers": answers})
+
 
 if __name__ == "__main__":
-   pprint.pprint(get_data())
+   pprint.pprint(get_all_answers())

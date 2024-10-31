@@ -1,6 +1,8 @@
+import json
+import pprint
 from flask import Flask, render_template, request
 from typing import Union
-from sqlstatement import get_data
+from sqlstatement import get_data, insert_answers
 
 from fastapi import FastAPI
 
@@ -14,9 +16,14 @@ app.register_error_handler(404, page_not_found)
 @app.route("/", methods=["GET", "POST"])
 def home():
    questions = get_data()
-   # return render_template('index.html', **locals())
+   
+   if request.method == 'POST':
+     answers = json.loads(request.data)
+     email = answers.pop('user_email')
+     insert_answers(email, json.dumps(answers))
+     
    return render_template('index.html', questions=questions)
 
  
-# if __name__ == '__main__':
-#     app.run(host='0.0.0.0', port='8885', debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='8885', debug=True)
