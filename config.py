@@ -6,5 +6,5 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
-engine = create_engine('sqlite:////home/Thiza/refocus/minidb.sqlite')
+engine = create_engine(os.environ.get('SQLITE'))
 Session = sessionmaker(bind=engine)

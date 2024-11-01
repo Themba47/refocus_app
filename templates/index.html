@@ -34,14 +34,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f9f9f9;
+            background-image: url(static/img/sky.jpg);
+            background-size: cover;
+            background-color: #000;
             color: #333;
         }
         
         header {
             width: 100%;
             padding: 10px;
-            background-color: #0073e6;
             color: white;
             text-align: center;
         }
@@ -51,9 +52,10 @@
             height: 75vh;
             padding: 20px;
             margin-top: 20px;
-            background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Main content styling */
@@ -76,28 +78,30 @@
 
         /* Question content styling */
         .questionnaire {
+            background-color: #ffffff79;
+            border-radius: 5px;
+            text-align: center;
             width: 100%;
             margin-bottom: 20px;
         }
 
         .question {
             padding: 15px;
-            border: 1px solid #ddd;
             border-radius: 5px;
             margin-bottom: 10px;
-            background-color: #f4f4f9;
+            
         }
 
         #progress-bar-div {
-            background-color: #f4f4f9;
+            background-color: #f4f4f96c;
             border-radius: 50px;
             margin: 10px 0;
             height: 10px;
-            width: 55%;
+            width: 50%;
         }
 
         #progress-bar {
-            background-color: #13c50a;
+            background-color: 3a4aff;
             border-radius: 50px;
             height: 100%;
             width: 0;
@@ -134,26 +138,26 @@
             <p>Top Banner Ad Placeholder (728x90)</p>
         </section> -->
 
-        <div id="progress-bar-div">
-            <div id="progress-bar"></div>
-        </div>
-
+        
         <!-- Main content area for questions -->
         <main>
             <section class="questionnaire">
-               
+                
                 <!-- In-content AdSense ad -->
                 <!-- <div class="ad-container">
                     <p>In-Content Ad Placeholder (300x250)</p>
                 </div> -->
-
+                
             </section>
-
+            
             <!-- Bottom AdSense Ad (Responsive) -->
             <!-- <section class="ad-container">
                 <p>Bottom Ad Placeholder (Responsive)</p>
             </section> -->
         </main>
+        <div id="progress-bar-div">
+            <div id="progress-bar"></div>
+        </div>
     </div>
 
     <footer>
@@ -202,6 +206,7 @@
 
         function downloadAiPdf() {
             createPDFWithStyledParagraph(ai_response)
+            // questionDiv.innerHTML = '<p>Looking to implement a survey like this one with AI capabilities like text extraction and form summary into your organisation lets get in touch. <a href="https://www.moloai.com">here</a></p>'
         }
 
         function getNextQtn(index) {
