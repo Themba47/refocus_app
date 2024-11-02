@@ -93,19 +93,66 @@
             
         }
 
+        .answer-input {
+            background-color: #ffffff0d;
+            border: 1px solid #ffffff;
+            color: #fff;
+            width: 300px;
+            height: 25px;
+            padding: 1%;
+            border-radius: 5px;
+        }
+
+        .answer-textarea {
+            background-color: #ffffff0d;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 1%;
+            border-radius: 5px;
+        }
+
         #progress-bar-div {
-            background-color: #f4f4f96c;
+            background-color: #f4f4f93d;
             border-radius: 50px;
             margin: 10px 0;
-            height: 10px;
+            display: none;
+            height: 2px;
             width: 50%;
         }
 
         #progress-bar {
-            background-color: 3a4aff;
+            box-shadow: 0px 0px 10px 8px #529affe6;
+            background-color: #2561b5;
+            border: .1px solid #fff;
             border-radius: 50px;
             height: 100%;
             width: 0;
+        }
+
+        .btn, #submit_qtns {
+            font-size: large;
+            background-color: #3a4aff;
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin: 2%;
+            padding: 2%;
+        }
+
+        .question p a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        #downloadPdf {
+            font-size: large;
+            background-color: #149b07;
+            width: 300px;
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin: 2%;
+            padding: 2%;
         }
 
         /* Styling for responsive design */
@@ -175,7 +222,8 @@
 		  let questionHolder = [],
           progress_bar = document.getElementById("progress-bar"),
           qtn_and_answer = {},
-          ai_response = null;
+          ai_response = null,
+          switchonProgress = false;
 
         const questionnaireDiv = document.querySelector('.questionnaire');
 
@@ -184,7 +232,7 @@
             questionDiv.classList.add('question');
 			questionDiv.setAttribute('id', 'question_submit')
             questionDiv.innerHTML = `<p>Please enter email to get a summary of your answers</p>`;
-            questionDiv.innerHTML += `<br><input class="email" type="email" id="email">`
+            questionDiv.innerHTML += `<br><input class="email answer-input" type="email" id="email">`
             questionDiv.innerHTML += `<br><button type="button" onclick="submitQtns('user_email')" id="submit_qtns">Submit</button>`
             questionnaireDiv.appendChild(questionDiv);
         }
@@ -207,7 +255,7 @@
 
         function downloadAiPdf() {
             createPDFWithStyledParagraph(ai_response)
-            questionDiv.innerHTML = '<p>Looking to implement a survey like this one with AI capabilities like text extraction and form summary into your organisation lets get in touch. <a href="https://www.moloai.com">here</a></p>'
+            questionnaireDiv.innerHTML = '<div class="question"><p>Looking to implement a survey<br> like this one with AI capabilities like text extraction and form summary <br>into your organisation lets get in touch. <a href="https://www.moloai.com">here</a></p></div>'
         }
 
         function getNextQtn(index) {
@@ -215,6 +263,10 @@
                 qtn_and_answer[document.querySelector('.question').innerText] = document.querySelector('.answer').value; 
                 questionnaireDiv.innerHTML = ''
                 let progress = Math.round((index+1) / questionHolder.length * 100);
+                if(!switchonProgress) {
+                    document.getElementById('progress-bar-div').style.display = 'block'
+                    switchonProgress = true;
+                }
                 progress_bar.style.width = progress + '%'
                 if(index == questionHolder.length - 1) {
                     call_last_div();
@@ -239,7 +291,7 @@
             .then((data) => {
                 ai_response = data.result
                 // Add loader animation delay so it looks like there is a delay
-                questionnaireDiv.innerHTML = '<button onclick="downloadAiPdf()">Download Response</button>'
+                questionnaireDiv.innerHTML = '<button id="downloadPdf" onclick="downloadAiPdf()">Download Response</button>'
             }).catch(console.error);
             
         }
@@ -251,12 +303,12 @@
             questionDiv.innerHTML = `<p>${index + 1}. ${questionText['question']}</p>`;
 
             if(questionText['type'] == 'input') {
-                questionDiv.innerHTML += `<br><input class="answer" type="text" id="answer_${index+1}">`
+                questionDiv.innerHTML += `<br><input class="answer answer-input" type="text" id="answer_${index+1}">`
             }
             if(questionText['type'] == 'textarea') {
-                questionDiv.innerHTML += `<br><textarea class="answer" id="answer_${index+1}"></textarea>`
+                questionDiv.innerHTML += `<br><textarea cols="40" rows="8" class="answer answer-textarea" id="answer_${index+1}"></textarea>`
             }
-            questionDiv.innerHTML += `<br><button onclick="getNextQtn(${index})" id="btn_${index+1}">Enter</button>`
+            questionDiv.innerHTML += `<br><button onclick="getNextQtn(${index})" class="btn" id="btn_${index+1}">Enter</button>`
             if(index == 0) {
                 questionnaireDiv.appendChild(questionDiv);
             }else {
