@@ -144,6 +144,15 @@
             text-decoration: underline;
         }
 
+        #spin-gear {
+            animation: spingear .7s linear infinite;
+        }
+
+        @keyframes spingear {
+            0% { transform: rotateZ(0deg); }
+            100% { transform: rotateZ(180deg); }
+        }
+
         #downloadPdf {
             font-size: large;
             background-color: #149b07;
@@ -279,6 +288,8 @@
 
         function submitQtns(key) {
             qtn_and_answer[key] = document.querySelector('#email').value;
+            questionnaireDiv.style.backgroundColor = 'transparent';
+            questionnaireDiv.innerHTML = '<img id="spin-gear" src="static/img/gear-solid.svg" width="80" height="80">'
             options = {
                 method: "POST",
                 headers: {
@@ -291,7 +302,7 @@
             .then((data) => {
                 ai_response = data.result
                 // Add loader animation delay so it looks like there is a delay
-                questionnaireDiv.innerHTML = '<button id="downloadPdf" onclick="downloadAiPdf()">Download Response</button>'
+                questionnaireDiv.innerHTML = '<h4>Processing Answers...</h4><br><button id="downloadPdf" onclick="downloadAiPdf()">Download Response</button>'
             }).catch(console.error);
             
         }
