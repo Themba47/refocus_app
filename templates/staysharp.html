@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6X3S34VP83"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6X3S34VP83');
+</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Refocus Realign guides you in identifying your goals and developing a path to success. Dive deep with goal-focused questions to unlock your full potential and create a system to achieve what matters most.">
+  <meta name="keywords" content="Self-discovery platform, Personal goals, Find focus, Goal achievement, Clarity and success, Growth mindset, Motivation tools">
+   <meta property="og:title" content="Refocus Realign: Gain Clarity, Set Goals, Achieve Success">
+  <meta property="og:image" content="https://www.bigcanvas.co.za/img/whatsappposter.jpg">
+  <meta property="og:url" content="bit.ly/4aCanV5">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#111f3b"/>
+    <title>Create your logo for your company</title>
+    <style>
+        /* Basic reset for a cleaner look */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url(static/img/sky.jpg);
+            background-size: cover;
+            background-color: #000;
+            color: #333;
+        }
+        
+        header {
+            width: 100%;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        #heading h1 {
+                font-size: large;
+            }
+        #heading p {
+            font-size: medium;
+        }
+
+        #nav button {
+            background-color: #3a4aff;
+            color: #fff;
+            border: none;
+            padding: 2%;
+            font-size: medium;
+            float: inline-end;
+        }
+        
+        .container {
+            width: 100%;
+            height: 75vh;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main content styling */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Ad section styling */
+        .ad-container {
+            margin: 20px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 728px;
+            text-align: center;
+            border: 1px dashed #ddd;
+            background-color: #fafafa;
+        }
+
+        /* Question content styling */
+        .questionnaire {
+            background-color: #030a2191;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #fff;
+            
+        }
+
+        .answer-input {
+            background-color: #ffffff0d;
+            border: 1px solid #ffffff;
+            color: #fff;
+            width: 300px;
+            height: 25px;
+            padding: 1%;
+            border-radius: 5px;
+        }
+
+        .answer-textarea {
+            background-color: #ffffff0d;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 1%;
+            border-radius: 5px;
+        }
+
+        #progress-bar-div {
+            background-color: #f4f4f93d;
+            border-radius: 50px;
+            margin: 10px 0;
+            display: none;
+            height: 2px;
+            width: 50%;
+        }
+
+        #progress-bar {
+            box-shadow: 0px 0px 10px 8px #529affe6;
+            background-color: #2561b5;
+            border: .1px solid #fff;
+            border-radius: 50px;
+            height: 100%;
+            width: 0;
+        }
+
+        .btn, #submit_qtns {
+            font-size: large;
+            background-color: #3a4aff;
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin: 2%;
+            padding: 2%;
+        }
+
+        .question p a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        #spin-gear {
+            animation: spingear .7s linear infinite;
+        }
+
+        @keyframes spingear {
+            0% { transform: rotateZ(0deg); }
+            100% { transform: rotateZ(180deg); }
+        }
+
+        #downloadPdf {
+            font-size: large;
+            background-color: #149b07;
+            width: 300px;
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin: 2%;
+            padding: 2%;
+        }
+
+		  #tyd {
+			color: #fff;
+			font-size: x-large;
+		  }
+
+		  .score, #retry_id {
+			color: #fff;
+			font-size: large;
+		  }
+
+        /* Styling for responsive design */
+        @media (min-width: 768px) {
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        footer {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #3a4aff;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+	 <header>
+		<div id="logo">
+			<div>Score <span class="score">0</span></div>
+			<div>Retry <span id="retry_id">3</span></div>
+		</div>
+		<div id="heading">
+			 <h1>Memory Game</h1>
+			 <p>Train to remember numbers ike phone numbers, number plates and even bank card numbers</p>
+		</div>
+		<div id="nav">
+			 <button type="button" onclick="openModel('payment-partial')">Buy Tokens</button>
+		</div>
+  </header>
+
+    <div class="container">
+        <!-- Top AdSense Banner Ad -->
+        <!-- <section class="ad-container">
+            <p>Top Banner Ad Placeholder (728x90)</p>
+        </section> -->
+
+        
+        <!-- Main content area for questions -->
+        <main>
+
+				<div class="clock">
+					<span id="tyd">0</span>
+				</div><br>
+
+            <section class="questionnaire">
+                
+                <!-- In-content AdSense ad -->
+                <!-- <div class="ad-container">
+                    <p>In-Content Ad Placeholder (300x250)</p>
+                </div> -->
+					 <div>
+						<button onclick="startGame()">START</button>
+					 </div>
+                
+            </section>
+            
+            <!-- Bottom AdSense Ad (Responsive) -->
+            <!-- <section class="ad-container">
+                <p>Bottom Ad Placeholder (Responsive)</p>
+            </section> -->
+        </main>
+        <div id="progress-bar-div">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Refocus Realign - All Rights Reserved</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // JavaScript for dynamically adding questions, if needed
+        let questions = [ 
+        {
+        'id': 1,
+        'question': "123 456 7890",
+        'name': "Question_1",
+        'placeholder': "Molo AI",
+        'type': 'input',
+        'options': null
+        },
+        {
+        'id': 2,
+        'question': "78 bny 09",
+        'name': "Question_2",
+        'placeholder': "Examples: Technology, fashion, real estate, food and beverage, etc.",
+        'type': 'textarea',
+        'options': null
+        },
+        {
+        'id': 3,
+        'question': "Which style best represents your brand?",
+        'name': "Question_3",
+        'placeholder': "Examples: Minimalist, modern, classic, playful, elegant, bold, or futuristic.",
+        'type': 'textarea',
+        'options': null
+        },
+        {
+        'id': 4,
+        'question': "What colors do you want in your logo?",
+        'name': "Question_4",
+        'placeholder': "Examples: Blue and white, monochrome, bright and vibrant, or neutral tones.",
+        'type': 'textarea',
+        'options': null
+        },
+        {
+        'id': 5,
+        'question': "What type of icon or symbol would you like to represent your brand?",
+        'name': "Question_5",
+        'placeholder': "Examples: Abstract shapes, animals, nature elements, technology-related symbols, or initials of your brand.",
+        'type': 'textarea',
+        'options': null
+        },
+        {
+        'id': 6,
+        'question': "How would you describe the personality of your brand?",
+        'name': "Question_6",
+        'placeholder': "Example: Professional, friendly, innovative, trustworthy, luxury, or fun.",
+        'type': 'textarea',
+        'options': null
+        },
+        {
+        'id': 7,
+        'question': "Are there any specific elements or styles you want to avoid?",
+        'name': "Question_7",
+        'placeholder': "Examples: No bright colors, no serif fonts, avoid complex details, etc.s",
+        'type': 'textarea',
+        'options': null
+        }
+    ];
+        
+
+		  let questionHolder = [],
+          progress_bar = document.getElementById("progress-bar"),
+			 time_in_secs = document.getElementById("tyd"),
+          qtn_and_answer = {},
+          ai_response = null,
+          switchonProgress = false,
+			 retrys = 3,
+			 score = 0,
+			 current_index = 0;
+
+        const questionnaireDiv = document.querySelector('.questionnaire');
+
+        function call_last_div() {
+            let questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+			questionDiv.setAttribute('id', 'question_submit')
+            questionDiv.innerHTML = `<p>Please enter email to get a summary of your answers</p>`;
+            questionDiv.innerHTML += `<br><input class="email answer-input" type="email" id="email">`
+            questionDiv.innerHTML += `<br><button type="button" onclick="submitQtns('user_email')" id="submit_qtns">Submit</button>`
+            questionnaireDiv.appendChild(questionDiv);
+        }
+
+        function createPDFWithStyledParagraph(para) {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            const paragraph = para;
+
+            pdf.setFont("times", "normal");
+            pdf.setFontSize(12);
+
+            const maxWidth = 180;
+            const textLines = pdf.splitTextToSize(paragraph, maxWidth);
+
+            pdf.text(textLines, 10, 10);
+
+            pdf.save("refocus-realign.pdf");
+        }
+
+        function downloadAiPdf() {
+            createPDFWithStyledParagraph(ai_response)
+            questionnaireDiv.innerHTML = '<div class="question"><p>Looking to implement a survey<br> like this one with AI capabilities like text extraction and form summary <br>into your organisation lets get in touch. <a href="https://www.moloai.com/ai-survey">here</a></p></div>'
+        }
+
+		  function startClock(secs) {
+			tyd = setInterval(() => {
+				time_in_secs.innerHTML = secs
+				if(secs > 0) {
+					secs--;
+				} else {
+					clearInterval(tyd)
+					getInputField()
+				}
+			}, 1000)
+		  }
+
+		  function getInputField() {
+			 document.getElementById(`answer_${current_index}`).style.display = 'block'
+			 document.getElementById(`question_text_${current_index}`).style.display = 'none'
+		  }
+
+		  function startGame() {
+			getNextQtn(0)
+		  }
+
+		  function checkAnswer() {
+			 let answer = document.getElementById(`answer_${current_index}`).value,
+			  qtn = document.getElementById(`question_text_${current_index}`).textContent;
+			  if(answer == qtn) {
+				console.log("Correct Answer")
+				score += retrys
+				return true
+			  } else {
+				console.log("Wrong....")
+				retrys--;
+				answer = '';
+				document.getElementById('retry_id').innerHTML = retrys;
+				return false
+			  }
+		  }
+
+        function getNextQtn(index) {
+            // if(document.querySelector('.answer').value.length > 0) {
+            //     qtn_and_answer[document.querySelector('.answer').name] = document.querySelector('.answer').value; 
+					 if (index > 0) {
+						if (!checkAnswer()) {
+							return
+						}
+					 }
+					 document.querySelector('.score').innerHTML = score;
+					 retrys = 3;
+					 document.getElementById('retry_id').innerHTML = retrys;
+                questionnaireDiv.innerHTML = ''
+                let progress = Math.round((index+1) / questionHolder.length * 100);
+                if(!switchonProgress) {
+                    document.getElementById('progress-bar-div').style.display = 'block'
+                    switchonProgress = true;
+                }
+                progress_bar.style.width = progress + '%'
+                if(index == questionHolder.length) {
+                    call_last_div();
+                    console.log(qtn_and_answer)
+                } else {
+						  console.log(index)
+                    questionnaireDiv.append(questionHolder[index])
+						  startClock(10)
+						  current_index = index;
+                }
+            // }
+        }
+
+        function submitQtns(key) {
+            qtn_and_answer[key] = document.querySelector('#email').value;
+            questionnaireDiv.style.backgroundColor = 'transparent';
+            questionnaireDiv.innerHTML = '<img id="spin-gear" src="static/img/gear-solid.svg" width="80" height="80">'
+            options = {
+                method: "POST",
+                headers: {
+                // "X-CSRFToken": document.querySelector("input[name=csrfmiddlewaretoken]").value
+                },
+                body: JSON.stringify(qtn_and_answer)
+            }
+            fetch("../logomaker", options)
+            .then((res) => res.json())
+            .then((data) => {
+                ai_response = data.result
+                // Add loader animation delay so it looks like there is a delay
+                questionnaireDiv.innerHTML = `<img src=${ai_response} width="200" height="200">`
+                questionnaireDiv.innerHTML += `<h4>Processing Answers...</h4><br><a href="${ai_response}" download id="downloadPdf">Download Logo</a>`
+            }).catch(console.error);
+            
+        }
+
+        questions.forEach((questionText, index) => {
+            let questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+				questionDiv.setAttribute('id', `question_${index+1}`)
+            questionDiv.innerHTML = `<p>${index + 1}.<br> <span id="question_text_${index}">${questionText['question']}</span></p>`;
+
+            if(questionText['type'] == 'input') {
+                questionDiv.innerHTML += `<br><input class="answer answer-input" name="${questionText['name']}" type="text" id="answer_${index}" placeholder="${questionText['placeholder']}" style="display: none;">`
+            }
+            if(questionText['type'] == 'textarea') {
+                questionDiv.innerHTML += `<br><textarea cols="40" rows="8" class="answer answer-textarea" name="${questionText['name']}" id="answer_${index}" placeholder="${questionText['placeholder']}" style="display: none;"></textarea>`
+            }
+            questionDiv.innerHTML += `<br><button onclick="getNextQtn(${index+1})" class="btn" id="btn_${index}">Submit</button>`
+            questionHolder.push(questionDiv)
+        });
+    </script>
+</body>
+</html>
